@@ -5,24 +5,11 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/webpack:webpack",
+      "executor": "@nrwl/vite:build",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "compiler": "babel",
-        "outputPath": "dist/apps/the-phone-app",
-        "index": "apps/the-phone-app/src/index.html",
-        "baseHref": "/",
-        "main": "apps/the-phone-app/src/main.tsx",
-        "polyfills": "apps/the-phone-app/src/polyfills.ts",
-        "tsConfig": "apps/the-phone-app/tsconfig.app.json",
-        "assets": [
-          "apps/the-phone-app/src/favicon.ico",
-          "apps/the-phone-app/src/assets"
-        ],
-        "styles": ["apps/the-phone-app/src/styles.scss"],
-        "scripts": [],
-        "webpackConfig": "@nrwl/react/plugins/webpack"
+        "outputPath": "dist/apps/the-phone-app"
       },
       "configurations": {
         "development": {
@@ -48,11 +35,10 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/webpack:dev-server",
+      "executor": "@nrwl/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "the-phone-app:build",
-        "hmr": true
+        "buildTarget": "the-phone-app:build"
       },
       "configurations": {
         "development": {
