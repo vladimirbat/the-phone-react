@@ -1,0 +1,61 @@
+@use './button-theme.scss';
+@use './content-icon-theme.scss';
+@use './banner-text-theme.scss';
+
+:root {
+    // Include css theme variables
+
+    --theme-color-primary: #ffe100;
+    --theme-color-secondary: #e9eedd;
+
+    --theme-color-pressed: #ccb400;
+    --theme-color-hover: #e6cb00;
+    --theme-color-inactive: #ffee70;
+
+    --theme-color-black: #000000;
+    --theme-color-black-900: #1a1a1a;
+    --theme-color-black-800: #333333;
+    --theme-color-black-700: #4d4d4d;
+    --theme-color-black-600: #666666;
+    --theme-color-black-500: #808080;
+    --theme-color-black-400: #999999;
+    --theme-color-black-300: #b3b3b3;
+    --theme-color-black-200: #cccccc;
+    --theme-color-black-100: #e6e6e6;
+    --theme-color-black-050: #f2f2f2;
+    --theme-color-white: #ffffff;
+
+    --theme-color-sucsess-900: #0a713a;
+    --theme-color-sucsess-700: #0d964d;
+    --theme-color-sucsess-500: #0fad5a;
+    --theme-color-sucsess-300: #14e174;
+    --theme-color-sucsess-100: #b4f8d4;
+
+    --theme-color-warning-900: #894706;
+    --theme-color-warning-700: #d77009;
+    --theme-color-warning-500: #f58719;
+    --theme-color-warning-300: #f8a34f;
+    --theme-color-warning-100: #fcd6b1;
+
+    --theme-color-info-900: #152c66;
+    --theme-color-info-700: #2650ba;
+    --theme-color-info-500: #2b5ad4;
+    --theme-color-info-300: #567cdc;
+    --theme-color-info-100: #dde5f8;
+
+    --theme-color-error-900: #750609;
+    --theme-color-error-700: #af080e;
+    --theme-color-error-500: #d20a0f;
+    --theme-color-error-300: #f4151d;
+    --theme-color-error-100: #fcc5c6;
+
+    --theme-color-background-content-default-hover: var(--theme-color-primary);
+    --theme-color-background-content-fill-default: var(--theme-color-black-100);
+    --theme-color-background-content-fill-hover: var(--theme-color-black-200);
+    
+    --theme-color-title-default: var(--theme-color-black);
+    // Category-Type-Item-Subitem-State
+    @include button-theme.define-variables;
+    @include content-icon-theme.define-variables;
+    @include banner-text-theme.define-variables;
+}

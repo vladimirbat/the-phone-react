@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@the-phone/ui": ["libs/the-phone-ui/src/index.ts"]
-    }
+    },
+    "types": ["reflect-metadata"]
   },
   "exclude": ["node_modules", "tmp"]
 }

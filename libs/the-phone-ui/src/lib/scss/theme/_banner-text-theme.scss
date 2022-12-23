@@ -1,0 +1,8 @@
+@mixin define-variables {
+    --color-text-banner-text-default: var(--theme-color-black-800);
+    --color-background-banner-text-default: var(--theme-color-black-050);
+    --color-text-banner-text-link-default: var(--theme-color-black);
+    --color-text-banner-text-info: var(--theme-color-white);
+    --color-background-banner-text-info: var(--theme-color-info-500);
+    --color-text-banner-text-link-info: var(--theme-color-primary);
+}

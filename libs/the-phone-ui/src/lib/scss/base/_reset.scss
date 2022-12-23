@@ -1,0 +1,62 @@
+html {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.5rem;
+}
+*,
+*::before,
+*::after,
+h1,
+h2,
+h3,
+h4,
+h5,
+label,
+button,
+caption,
+.legal,
+.menu {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+}
+h1,
+h2,
+h3,
+h4,
+h5{
+    line-height: normal;
+}
+
+label {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+button {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+caption {
+    font-size: 11px;
+    line-height: 14px;
+}
+
+.legal {
+    font-size: 8px;
+    line-height: 10px;
+}
+
+.menu {
+    font-size: 16px;
+}

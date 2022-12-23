@@ -1,0 +1,78 @@
+$grid__bp-xs: 0;
+$grid__bp-sm: 768;
+$grid__bp-md: 1024;
+$grid__bp-lg: 1280;
+$grid__cols: 12;
+
+$map-grid-props: (
+        '-xs': $grid__bp-xs,
+        '-sm': $grid__bp-sm,
+        '-md': $grid__bp-md,
+        '-lg': $grid__bp-lg
+);
+
+@mixin create-mq($breakpoint, $min-or-max) {
+  @if($breakpoint == 0) {
+    @content;
+  } @else {
+    @media screen and (#{$min-or-max}-width: ($breakpoint * 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin add-padding($breakpoint){
+    @if($breakpoint == 0) {
+        padding-left: 5px;
+        padding-right: 5px;
+      } @else {
+        @media screen and (min-width: ($breakpoint * 1px)) {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+      }
+}
+
+@mixin create-col-classes($modifier, $grid-cols, $breakpoint) {
+  @include create-mq($breakpoint, 'min') {
+    @for $i from 1 through $grid-cols {
+      .col-flex#{$modifier}-#{$i} {
+        flex-basis: calc(100 / ($grid-cols / $i) ) * 1%;
+        @include add-padding($breakpoint)
+      }
+    }
+  }
+}
+
+
+.container {
+  max-width: $grid__bp-md * 1px;
+  margin: 0 auto;
+  padding: 0 10px;
+  @media only screen and (min-width:1280px) {
+    padding: 0 12px;
+  }
+  &-flex {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1920px;
+    padding-left: 4px;
+    padding-top:4px;
+    @media only screen and (min-width:1280px) {
+        padding-left: 40px;
+        padding-top:40px;
+    }
+  }
+}
+
+row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  @each $modifier , $breakpoint in $map-grid-props {
+    @include create-col-classes($modifier, $grid__cols, $breakpoint);
+  }

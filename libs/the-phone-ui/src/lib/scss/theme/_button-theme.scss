@@ -1,0 +1,12 @@
+@mixin define-variables {
+    --radius-border-button: 2px;
+    --color-text-button: var(--theme-color-black-800);
+    --color-background-button-primary-default: var(--theme-color-primary);
+    --color-background-button-primary-hover: var(--theme-color-hover);
+    --color-background-button-primary-pressed: var(--theme-color-pressed);
+    --color-background-button-primary-inactive: var(--theme-color-inactive);
+
+    --color-background-button-secondary-default: var(--theme-color-white);
+    --color-background-button-secondary-hover: var(--theme-color-black-050);
+    --color-background-button-secondary-pressed: var(--theme-color-black-100);
+}

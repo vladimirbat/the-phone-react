@@ -1,0 +1,47 @@
+@use 'sass:map';
+@use '../abstract/variables';
+
+@mixin _min-breakpoint($breakpoint: 's') {
+    @media (min-width: map.get(variables.$breakpoints, $breakpoint)) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @include _min-breakpoint('xl') {
+        @content;
+    }
+}
+
+@mixin text-overflow {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@mixin text-overflow-lines($lines: 1) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+}
+
+@mixin text-overflow-lineHeight($lineHeight, $lines) {
+    max-height: calc(#{$lineHeight} * #{$lines});
+    overflow: hidden;
+    word-break: break-word;
+}
+
+@mixin cut-lines($lines, $lineHeight: false) {
+    @if ($lines == 1) {
+        @include text-overflow;
+    } @else if($lines > 1) {
+        @if ($lineHeight) {
+            @include text-overflow-lineHeight($lines, $lineHeight);
+        }
+        @supports (-webkit-line-clamp: 1) {
+            @include text-overflow-lines($lines);
+            max-height: none;
+        }
+    }
+}

@@ -1,0 +1,42 @@
+.phone-card {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    display:block;
+    .image-container {
+        width: 100%;
+        height: 164px;
+        overflow: hidden;
+        position: relative;
+        background-color: var(--theme-color-background-content-fill-default);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @media only screen and (min-width:768px) {
+            height: 348px;
+        }
+        img {
+            object-fit: contain;
+            height: 88%;
+            padding: 10px;
+            transition: all 0.3s ease-in;
+            border-style: none;
+        }
+    }
+    .description-container {
+        min-height: 170px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        h5 {
+            font-weight: bold;
+            color: var(--theme-color-title-default);
+            margin: 0;
+            padding: 0;
+        }
+        .text-family {
+            font-weight: 400;
+        }
+    }
+}

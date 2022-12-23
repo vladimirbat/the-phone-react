@@ -1,0 +1,120 @@
+
+/* fallback */
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 100 700;
+    src: url(../../../assets/fonts/material-symbol-outlined.woff2) format('woff2');
+}
+
+%icon {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -moz-font-feature-settings: 'liga';
+    -webkit-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.icon {
+    @extend %icon;
+}
+
+.icon-lg {
+    font-size: 1.33333em;
+    line-height: 0.75em;
+    vertical-align: -0.0667em;
+}
+
+.icon-xs {
+    font-size: 0.75em;
+}
+
+.icon-sm {
+    font-size: 0.875em;
+}
+
+.icon-1x {
+    font-size: 1em;
+}
+
+.icon-2x {
+    font-size: 2em;
+}
+
+.icon-3x {
+    font-size: 3em;
+}
+
+.icon-4x {
+    font-size: 4em;
+}
+
+.icon-5x {
+    font-size: 5em;
+}
+
+.icon-6x {
+    font-size: 6em;
+}
+
+.icon-7x {
+    font-size: 7em;
+}
+
+.icon-8x {
+    font-size: 8em;
+}
+
+.icon-9x {
+    font-size: 9em;
+}
+
+.icon-10x {
+    font-size: 10em;
+}
+
+.icon-fw {
+    text-align: center;
+    width: 1.25em;
+}
+
+.icon-border {
+    border: solid 0.08em #eee;
+    border-radius: 0.1em;
+    padding: 0.2em 0.25em 0.15em;
+}
+
+.icon-pull-left {
+    float: left;
+}
+
+.icon-pull-right {
+    float: right;
+}
+
+.icon.icon-pull-left {
+    margin-right: 0.3em;
+}
+
+.icon.icon-pull-right {
+    margin-left: 0.3em;
+}
+
+.icon-search::before {
+    content: '\e8b6';
+}
+
+.icon-arrow-back::before {
+    content: '\e5c4';
+}
