@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@the-phone/commons": ["libs/the-phone-commons/src/index.ts"],
       "@the-phone/ui": ["libs/the-phone-ui/src/index.ts"]
     },
     "types": ["reflect-metadata"]
