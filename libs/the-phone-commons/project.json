@@ -3,32 +3,33 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/the-phone-commons/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
-    "build": {
-      "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/the-phone-commons",
-        "main": "libs/the-phone-commons/src/index.ts",
-        "tsConfig": "libs/the-phone-commons/tsconfig.lib.json",
-        "assets": ["libs/the-phone-commons/*.md"]
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/the-phone-commons/**/*.ts"]
+        "lintFilePatterns": ["libs/the-phone-commons/**/*.{ts,js}"]
+      }
+    },
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/libs/the-phone-commons"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@nrwl/vite:test",
+      "outputs": ["{projectRoot}/coverage"],
       "options": {
-        "jestConfig": "libs/the-phone-commons/jest.config.ts",
         "passWithNoTests": true
       }
     }
-  },
-  "tags": []
+  }
 }

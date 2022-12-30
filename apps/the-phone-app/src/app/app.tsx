@@ -5,25 +5,25 @@ import PhonesListView from './phones-module/phones-list-view/phones-list-view';
 export function App() {
   return (
     <>
-    {/* <BrowserRouter> */}
       <div className="app container">
-        {/* <nav className="app-nav">
+        <PhonesListView />
+      </div>
+      {/* <BrowserRouter>
+      <div className="app container">
+        <nav className="app-nav">
           <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
           </ul>
-        </nav> */}
-        <PhonesListView/>
+        </nav>
         <div className="app-content">
-          {/* <Routes>
-            <Route path="/"> */}
-              {/* <PhoneCard/ > */}
-            {/* </Route>
-          </Routes> */}
+          <Routes>
+            <Route path="/"></Route>
+          </Routes>
         </div>
       </div>
-    {/* </BrowserRouter> */}
+      </BrowserRouter> */}
     </>
   );
 }

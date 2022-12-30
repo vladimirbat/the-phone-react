@@ -1,9 +1,8 @@
-import { Product } from '../model/products.model';
+import { Product } from '@the-phone/commons';
 import PhoneColors from '../phone-colors/phone-colors';
 import PhonePrice from '../phone-price/phone-price';
 import './phone-card.scss';
 
-/* eslint-disable-next-line */
 export interface PhoneCardProps {
   product: Product;
 }
@@ -21,12 +20,10 @@ export function PhoneCard(props: PhoneCardProps) {
       <div className="description-container">
         <div className="upper-text">
           <h5>{brand}</h5>
-          <span className="text-family">
-            {model}
-          </span>
+          <span className="text-family">{model}</span>
         </div>
-        <PhonePrice price={product.price}/>
-        <PhoneColors colors={product.options?.colors}/>
+        <PhonePrice price={product.price} />
+        <PhoneColors colors={options?.colors} />
       </div>
     </article>
   );

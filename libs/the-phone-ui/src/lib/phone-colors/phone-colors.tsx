@@ -1,26 +1,26 @@
-import { DeviceVariantOption } from '../model/products.model';
+import { DeviceVariantOption } from '@the-phone/commons';
 import './phone-colors.scss';
 
 /* eslint-disable-next-line */
 export interface PhoneColorsProps {
-  colors: DeviceVariantOption[]
+  colors: DeviceVariantOption[];
 }
 
 export function PhoneColors(props: PhoneColorsProps) {
-  const {colors} = props;
+  const { colors } = props;
   return (
     <div className="phone-colors-container mt-1">
-      {colors.map((color)=> renderColor(color))}
+      {colors.map((color) => renderColor(color))}
     </div>
   );
 }
 
 export default PhoneColors;
 
-function renderColor(color:DeviceVariantOption): JSX.Element | null{
-  if(!color?.code){
+function renderColor(color: DeviceVariantOption): JSX.Element | null {
+  if (!color?.code) {
     return null;
   }
-  const style = {backgroundColor: color.code};
-  return <div className="phone-color" style={style}></div>
+  const style = { backgroundColor: color.code };
+  return <div key={color.code} className="phone-color" style={style}></div>;
 }

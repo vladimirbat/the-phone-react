@@ -1,62 +1,62 @@
+import {
+  emmitAndWaitForResponse,
+  EventsRegistry,
+  SearchPhonesRequest,
+  SearchPhonesResponse,
+} from '@the-phone/commons';
 import { PhoneCard, Product } from '@the-phone/ui';
+
+import { useEffect, useState } from 'react';
 import './phones-list-view.scss';
 
-const product: Product = {
-  brand: 'Samsung',
-  battery: '',
-  model: 'televisor 55 Smart TV QLED 4K QE55Q60AAU negro outlet',
-  cpu: '',
-  ram: '',
-  dimentions: '1232.1 x 747.8 x 228.8 (largo x ancho x fondo mm)',
-  displayResolution: 'px/inch',
-  id: '553630257',
-  imgUrl: 'samsung_smart_tv_qled_q60aau_outlet_Front.webp',
-  options: {
-    colors: [{ name: 'Gris', code: '#808080' },{ name: 'Gris', code: 'red' },{ name: 'Gris', code: 'olive' }],
-    storage: [{ code: '32.0 GB', name: '32.0 GB' }],
-  },
-  price: [
-    {
-      color: { name: 'Gris', code: '#808080' },
-      storage: { name: '32.0 GB', code: '32.0 GB' },
-      price: 216,
-    },
-  ],
-  primaryCamera: '',
-  secondaryCamera: '',
-  so: '',
-  weight: '16200 gr',
-};
-
 /* eslint-disable-next-line */
-export interface PhonesListViewProps {
+export interface PhonesListViewProps {}
 
-}
+export function PhonesListView(props: PhonesListViewProps): JSX.Element {
+  console.log('render');
+  const [products, setProducts] = useState<Product[] | null>(null);
 
-export function PhonesListView(props: PhonesListViewProps) {
+  useEffect(() => {
+    console.log('useEfect, products = ', products);
+    const requestData = SearchPhonesRequest.createDefaultRequest();
+    emmitAndWaitForResponse<SearchPhonesRequest, SearchPhonesResponse>(
+      EventsRegistry.REQUEST_PHONES,
+      EventsRegistry.RESPONSE_PHONES,
+      requestData
+    ).then((response: SearchPhonesResponse) => {
+      console.log('Search api response', response);
+      setProducts(response.products);
+    });
+  }, []);
   return (
-    <div className="container-flex">
+    <div className="container-flex" style={{ border: '1px solid red' }}>
       <div className="col-flex-xs-12 col-flex-sm-12 col-flex-md-12 col-flex-lg-12">
-        <div className="phones-list-grid">
-          <div className="col-flex-xs-6 col-flex-sm-6 col-flex-md-4 col-flex-lg-3">
-            <PhoneCard product={product}/>
-          </div>
-          <div className="col-flex-xs-6 col-flex-sm-6 col-flex-md-4 col-flex-lg-3">
-            <PhoneCard product={product}/>
-          </div>
-          <div className="col-flex-xs-6 col-flex-sm-6 col-flex-md-4 col-flex-lg-3">
-            <PhoneCard product={product}/>
-          </div>
-          <div className="col-flex-xs-6 col-flex-sm-6 col-flex-md-4 col-flex-lg-3">
-            <PhoneCard product={product}/>
-          </div>
-          <div className="col-flex-xs-6 col-flex-sm-6 col-flex-md-4 col-flex-lg-3">
-            <PhoneCard product={product}/>
-          </div>
-        </div>
+        {products ? renderList(products) : null}
+        {!products ? renderSpinner() : null}
       </div>
     </div>
   );
+}
+
+function renderList(products: Product[]) {
+  return (
+    <div className="phones-list-grid">
+      {products.map((product) => {
+        return (
+          <div
+            key={product.id}
+            className="col-flex-xs-6 col-flex-sm-6 col-flex-md-4 col-flex-lg-3"
+          >
+            <PhoneCard product={product} />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function renderSpinner(): JSX.Element {
+  return <img src="/src/assets/spinner.svg" alt="loading ..." />;
 }
 
 export default PhonesListView;

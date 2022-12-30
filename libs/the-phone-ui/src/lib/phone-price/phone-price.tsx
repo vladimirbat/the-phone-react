@@ -1,5 +1,5 @@
 import { stringify } from 'querystring';
-import { PriceOption } from '../model/products.model';
+import { PriceOption } from '../../../../the-phone-commons/src/lib/model/products.model';
 import './phone-price.scss';
 
 /* eslint-disable-next-line */
