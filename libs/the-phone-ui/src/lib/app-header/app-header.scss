@@ -1,0 +1,32 @@
+.app-header{
+  background-color: var(--theme-color-dark);
+  color: var(--theme-color-light);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  .logo-container{
+    height: 4rem;
+    padding: 1rem;
+    img{
+      max-width:100%;
+      max-height:100%;
+      width: auto;
+    }
+  }
+  .title-container{
+    flex-grow: 2;
+    display: flex;
+    h1{
+      text-align: center;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+      width: 100%;
+      @media screen and (max-width: 384px) {
+        font-size: 1rem;
+        line-height: 1rem;
+      }
+    }
+  }
+}

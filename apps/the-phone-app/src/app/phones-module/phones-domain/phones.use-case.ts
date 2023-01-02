@@ -25,7 +25,6 @@ export class PhonesUseCase {
     this.phonesApi
       .searchPhones(searchPhonesRequest)
       .then((response: SearchPhonesResponse) => {
-        console.log('Search api response', response);
         this.responsePhonesEmitter.emitEvent<SearchPhonesResponse>(response);
       });
   }

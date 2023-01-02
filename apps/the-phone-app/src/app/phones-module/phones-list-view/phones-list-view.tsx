@@ -1,3 +1,4 @@
+import './phones-list-view.scss';
 import {
   emmitAndWaitForResponse,
   EventsRegistry,
@@ -7,7 +8,6 @@ import {
 import { PhoneCard, Product } from '@the-phone/ui';
 
 import { useEffect, useState } from 'react';
-import './phones-list-view.scss';
 
 /* eslint-disable-next-line */
 export interface PhonesListViewProps {}
@@ -17,7 +17,6 @@ export function PhonesListView(props: PhonesListViewProps): JSX.Element {
   const [products, setProducts] = useState<Product[] | null>(null);
 
   useEffect(() => {
-    console.log('useEfect, products = ', products);
     const requestData = SearchPhonesRequest.createDefaultRequest();
     emmitAndWaitForResponse<SearchPhonesRequest, SearchPhonesResponse>(
       EventsRegistry.REQUEST_PHONES,
@@ -29,7 +28,7 @@ export function PhonesListView(props: PhonesListViewProps): JSX.Element {
     });
   }, []);
   return (
-    <div className="container-flex" style={{ border: '1px solid red' }}>
+    <div className="container-flex">
       <div className="col-flex-xs-12 col-flex-sm-12 col-flex-md-12 col-flex-lg-12">
         {products ? renderList(products) : null}
         {!products ? renderSpinner() : null}

@@ -2,13 +2,15 @@ $grid__bp-xs: 0;
 $grid__bp-sm: 768;
 $grid__bp-md: 1024;
 $grid__bp-lg: 1280;
+$grid__bp-xl: 1920;
 $grid__cols: 12;
 
 $map-grid-props: (
         '-xs': $grid__bp-xs,
         '-sm': $grid__bp-sm,
         '-md': $grid__bp-md,
-        '-lg': $grid__bp-lg
+        '-lg': $grid__bp-lg,
+        '-xl': $grid__bp-xl
 );
 
 @mixin create-mq($breakpoint, $min-or-max) {
@@ -46,7 +48,7 @@ $map-grid-props: (
 
 
 .container {
-  max-width: $grid__bp-md * 1px;
+  max-width: $grid__bp-xl * 1px;
   margin: 0 auto;
   padding: 0 10px;
   @media only screen and (min-width:1280px) {
@@ -58,7 +60,7 @@ $map-grid-props: (
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 1920px;
+    max-width: $grid__bp-xl * 1px;
     padding-left: 4px;
     padding-top:4px;
     @media only screen and (min-width:1280px) {
@@ -76,3 +78,4 @@ row {
   @each $modifier , $breakpoint in $map-grid-props {
     @include create-col-classes($modifier, $grid__cols, $breakpoint);
   }
+

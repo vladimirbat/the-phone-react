@@ -5,12 +5,16 @@
 :root {
     // Include css theme variables
 
-    --theme-color-primary: #ffe100;
-    --theme-color-secondary: #e9eedd;
+    $white: #ffffff;
+    --theme-color-light: #b4cde6;
+    --theme-color-dark: #152e1b;
+    --theme-color-primary: #5e3f4e;
+    --theme-color-secondary: #ea4c87;
 
-    --theme-color-pressed: #ccb400;
-    --theme-color-hover: #e6cb00;
-    --theme-color-inactive: #ffee70;
+
+    --theme-color-pressed: #4f3642;
+    --theme-color-hover: #522e40;
+    --theme-color-inactive: #8d6679;
 
     --theme-color-black: #000000;
     --theme-color-black-900: #1a1a1a;
@@ -23,7 +27,7 @@
     --theme-color-black-200: #cccccc;
     --theme-color-black-100: #e6e6e6;
     --theme-color-black-050: #f2f2f2;
-    --theme-color-white: #ffffff;
+    --theme-color-white: $white;
 
     --theme-color-sucsess-900: #0a713a;
     --theme-color-sucsess-700: #0d964d;
@@ -54,6 +58,10 @@
     --theme-color-background-content-fill-hover: var(--theme-color-black-200);
     
     --theme-color-title-default: var(--theme-color-black);
+
+
+
+
     // Category-Type-Item-Subitem-State
     @include button-theme.define-variables;
     @include content-icon-theme.define-variables;
