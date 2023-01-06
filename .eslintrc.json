@@ -18,7 +18,8 @@
               }
             ]
           }
-        ]
+        ],
+        "max-len": ["warning", { "code": 120, "tabWidth": 2 }]
       }
     },
     {

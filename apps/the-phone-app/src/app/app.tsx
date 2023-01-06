@@ -11,15 +11,7 @@ export function App() {
     <BrowserRouter>
       <AppNavigateProvider />
       <AppHeader title="The phone store" srcLogo="/src/assets/logo.png" />
-      <div className="app container">
-        <nav className="app-nav">
-          <ul>
-            <li>
-              <Link to="/">Search</Link>
-              <Link to="/phone-detail/1">Detail</Link>
-            </li>
-          </ul>
-        </nav>
+      <div className="app container mt-4">
         <div className="app-content">
           <div className="app container">
             <Routes>

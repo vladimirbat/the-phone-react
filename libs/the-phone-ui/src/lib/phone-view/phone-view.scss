@@ -1,7 +1,60 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.phone-detail-view {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  display: block;
+  .image-container {
+    width: 164px;
+    height: 164px;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--theme-color-background-content-fill-default);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 3;
+    @media only screen and (min-width: 768px) {
+      width: 100%;
+      height: 348px;
+      order: 1;
+    }
+    img {
+      object-fit: contain;
+      height: 88%;
+      padding: 10px;
+      transition: all 0.3s ease-in;
+      border-style: none;
+    }
+  }
+  .description-container {
+    order: 2;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    padding-left: 3em;
+    h2 {
+      font-weight: bold;
+      font-size: 2rem;
+      text-align: center;
+      color: var(--theme-color-title-default);
+      padding: 0;
+    }
+    .text-family {
+      font-weight: 400;
+    }
+    .color-selector {
+      margin-top: 3rem;
+      .color-selector-text {
+        padding-left: 3rem;
+        font-weight: bold;
+      }
+      .color-selector-options {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}

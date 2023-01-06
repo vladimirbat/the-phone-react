@@ -4,23 +4,38 @@ import './phone-colors.scss';
 /* eslint-disable-next-line */
 export interface PhoneColorsProps {
   colors: DeviceVariantOption[];
+  colorSelected?: ColorSelectedCallback;
 }
 
 export function PhoneColors(props: PhoneColorsProps) {
-  const { colors } = props;
+  const { colors, colorSelected } = props;
   return (
     <div className="phone-colors-container mt-1">
-      {colors.map((color) => renderColor(color))}
+      {colors.map((color) => renderColor(color, colorSelected))}
     </div>
   );
 }
 
 export default PhoneColors;
 
-function renderColor(color: DeviceVariantOption): JSX.Element | null {
+function renderColor(
+  color: DeviceVariantOption,
+  colorSelected?: ColorSelectedCallback
+): JSX.Element | null {
   if (!color?.code) {
     return null;
   }
   const style = { backgroundColor: color.code };
-  return <div key={color.code} className="phone-color" style={style}></div>;
+  return (
+    <div
+      key={color.code}
+      className="phone-color"
+      style={style}
+      onClick={(event) => {
+        colorSelected ? colorSelected(color.code) : null;
+      }}
+    ></div>
+  );
 }
+
+export type ColorSelectedCallback = (colorCode: string) => void;

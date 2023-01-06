@@ -31,3 +31,30 @@ export interface DeviceVariantOption {
   code: string;
   name: string;
 }
+
+export const PRODUCT_LABELS:ProductLabels = { 'es': {
+  brand: 'Marca',
+  cpu: 'CPU',
+  ram: 'RAM',
+  so: 'Sistema operativo',
+  displayResolution: 'Resolución',
+  battery: 'Batería',
+  dimentions: 'Dimensiones',
+  weight: 'Peso',
+  primaryCamera: 'Cámara Principal',
+  secondaryCamera: 'Cámara Secundaria',
+}}
+
+export type ProductLabels = { [key:string]: {
+  brand: string,
+  model: string,
+  cpu: string,
+  ram: string,
+  so: string,
+  displayResolution: string,
+  battery: string,
+  dimentions: string,
+  weight: string,
+  primaryCamera: string,
+  secondaryCamera: string,
+}}

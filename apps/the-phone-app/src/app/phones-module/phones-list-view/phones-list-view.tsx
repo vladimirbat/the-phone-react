@@ -14,7 +14,6 @@ import { useEffect, useState } from 'react';
 export interface PhonesListViewProps {}
 
 export function PhonesListView(props: PhonesListViewProps): JSX.Element {
-  console.log('render');
   const [products, setProducts] = useState<Product[] | null>(null);
 
   useEffect(() => {
@@ -24,7 +23,6 @@ export function PhonesListView(props: PhonesListViewProps): JSX.Element {
       EventsRegistry.RESPONSE_PHONES,
       requestData
     ).then((response: SearchPhonesResponse) => {
-      console.log('Search api response', response);
       setProducts(response.products);
     });
   }, []);

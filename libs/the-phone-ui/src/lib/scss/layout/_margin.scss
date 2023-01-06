@@ -1,0 +1,31 @@
+$margin-steps: 12;
+
+@for $i from 1 through $margin-steps {
+  .mt-#{$i} {
+    margin-top: calc($i) * 0.5rem;
+  }
+  .ml-#{$i} {
+    margin-left: calc($i) * 0.5rem;
+  }
+  .mb-#{$i} {
+    margin-bottom: calc($i) * 0.5rem;
+  }
+  .mr-#{$i} {
+    margin-right: calc($i) * 0.5rem;
+  }
+}
+
+@for $i from 1 through $margin-steps {
+  .pt-#{$i} {
+    padding-top: calc($i) * 0.5rem;
+  }
+  .pl-#{$i} {
+    padding-left: calc($i) * 0.5rem;
+  }
+  .pb-#{$i} {
+    padding-bottom: calc($i) * 0.5rem;
+  }
+  .pr-#{$i} {
+    padding-right: calc($i) * 0.5rem;
+  }
+}

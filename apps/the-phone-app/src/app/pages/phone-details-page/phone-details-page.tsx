@@ -2,8 +2,9 @@ import {
   emmitAndWaitForResponse,
   EventEmitter,
   EventsRegistry,
+  Product,
 } from '@the-phone/commons';
-import { PhoneView, Product } from '@the-phone/ui';
+import { PhoneView } from '@the-phone/ui';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import './phone-details-page.scss';
@@ -25,7 +26,6 @@ export function PhoneDetailsPage(props: PhoneDetailsPageProps) {
   }, [id]);
   return (
     <div>
-      <h1>Welcome to PhoneDetailsPage with id = {id}</h1>
       {id && product ? (
         <PhoneView product={product} iWantIt={(event) => processIWantIt(id)} />
       ) : null}
