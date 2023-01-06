@@ -4,4 +4,5 @@ export * from './lib/tools/events/events-registry';
 export * from './lib/tools/events/promised-event-emmiter-receiver';
 export * from './lib/tools/events/events.model';
 export * from './lib/model/products.model';
+export * from './lib/tools/model/utils.model';
 

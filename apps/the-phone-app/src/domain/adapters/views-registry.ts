@@ -1,0 +1,5 @@
+export enum ViewsRegistry {
+  PHONES_VIEW = 'PHONES_VIEW',
+  PHONE_VIEW = 'PHONE_VIEW',
+  SHOPPINGCART_VIEW = 'SHOPPINGCART_VIEW'
+}

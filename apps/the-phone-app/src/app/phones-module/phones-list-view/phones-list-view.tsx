@@ -1,6 +1,7 @@
 import './phones-list-view.scss';
 import {
   emmitAndWaitForResponse,
+  EventEmitter,
   EventsRegistry,
   SearchPhonesRequest,
   SearchPhonesResponse,
@@ -46,12 +47,18 @@ function renderList(products: Product[]) {
             key={product.id}
             className="col-flex-xs-6 col-flex-sm-6 col-flex-md-4 col-flex-lg-3"
           >
-            <PhoneCard product={product} />
+            <PhoneCard product={product} selected={(id) => phoneSelected(id)} />
           </div>
         );
       })}
     </div>
   );
+}
+function phoneSelected(id: string): void {
+  console.log('PhonesListView#phoneSelected:', id);
+  EventEmitter.eventEmmiterFactory(
+    EventsRegistry.PHONE_SELECTED_FOR_DISPLAY
+  ).emitEvent(id);
 }
 
 function renderSpinner(): JSX.Element {

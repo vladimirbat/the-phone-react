@@ -15,6 +15,7 @@ export class EventReceiver<T> {
     console.log('subscribe ', this.name, hash);
     this.subscribedCallbacks[hash] = eventHandler;
     this.subscribeToCustomEventIfNeeded();
+    this.logSubscribers();
     return hash;
   }
   
@@ -47,6 +48,11 @@ export class EventReceiver<T> {
       return true;
     }
     return false;
+  }
+
+  private logSubscribers(){
+    console.log('----- Current subscritpors -----');
+    Object.keys(this.subscribedCallbacks).forEach((key)=> console.log('-->', key))
   }
 }
 
