@@ -13,7 +13,7 @@ export function App() {
   return (
     <BrowserRouter>
       <AppNavigateProvider />
-      <AppHeader title="The phone store" srcLogo="/src/assets/logo.png" />
+      <AppHeader title="The phone store" srcLogo="/logo.png" />
       <div className="app container mt-4">
         <div className="app-content">
           <div className="app container">

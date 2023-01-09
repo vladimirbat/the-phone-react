@@ -18,11 +18,7 @@
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/libs/the-phone-ui",
-        "assets": {
-          "input": "libs/the-phone-ui/src/assets",
-          "glob": "**/*",
-          "output": "assets"
-        }
+        "assets": []
       },
       "configurations": {
         "development": {},

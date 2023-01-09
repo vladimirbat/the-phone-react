@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "nx serve",
-    "build": "nx build",
+    "build": "nx build the-phone-app --prod",
     "lint": "nx run the-phone-ui:lint && nx run the-phone-app:lint",
     "tsc": "tsc apps/the-phone-app/src/main.tsx",
     "graph": "nx dep-graph",

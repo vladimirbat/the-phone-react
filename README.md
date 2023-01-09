@@ -57,10 +57,15 @@ Ejecutar `nx graph` lo cual abrirá una ventana del navegador.
 - [x] Maquetación del listado de dispositivos.
 - [x] Llamada al API para listado por defecto de dispositivos.
 - [x] Maquetación de la cabecera de la aplicación.
+- [x] Configuración de assets de la aplicación.
 - [ ] Scroll virtual del listado de dispositivos.
 - [ ] Maquetación de campos del buscador de dispositivos e implementación de su lógica.
 - [ ] **WIP**: Vista del detalle de un dispositivo (queda ajustar maquetación y navegación al carrito).
 - [ ] Página de resumen del carrito de la compra.
 - [ ] Icono del carrito de la compra (muestra número de productos en la cesta).
+- [ ] Refactorizar arq. hexagonal en el frontend.
+- [ ] Agregar acción prepush para ejecutar tsc antes de subir cambios.
+- [ ] Implementar testing.
+
 
 

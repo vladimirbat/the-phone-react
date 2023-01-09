@@ -1,12 +1,6 @@
 import './phones-list-view.scss';
-import {
-  emmitAndWaitForResponse,
-  EventEmitter,
-  EventsRegistry,
-  SearchPhonesRequest,
-  SearchPhonesResponse,
-} from '@the-phone/commons';
-import { PhoneCard, Product } from '@the-phone/ui';
+import { emmitAndWaitForResponse, EventEmitter, EventsRegistry, Product, SearchPhonesRequest, SearchPhonesResponse } from '@the-phone/commons';
+import { PhoneCard } from '@the-phone/ui';
 
 import { useEffect, useState } from 'react';
 
@@ -18,11 +12,7 @@ export function PhonesListView(props: PhonesListViewProps): JSX.Element {
 
   useEffect(() => {
     const requestData = SearchPhonesRequest.createDefaultRequest();
-    emmitAndWaitForResponse<SearchPhonesRequest, SearchPhonesResponse>(
-      EventsRegistry.REQUEST_PHONES,
-      EventsRegistry.RESPONSE_PHONES,
-      requestData
-    ).then((response: SearchPhonesResponse) => {
+    emmitAndWaitForResponse<SearchPhonesRequest, SearchPhonesResponse>(EventsRegistry.REQUEST_PHONES, EventsRegistry.RESPONSE_PHONES, requestData).then((response: SearchPhonesResponse) => {
       setProducts(response.products);
     });
   }, []);
@@ -41,10 +31,7 @@ function renderList(products: Product[]) {
     <div className="phones-list-grid">
       {products.map((product) => {
         return (
-          <div
-            key={product.id}
-            className="col-flex-xs-6 col-flex-sm-6 col-flex-md-4 col-flex-lg-3"
-          >
+          <div key={product.id} className="col-flex-xs-6 col-flex-sm-6 col-flex-md-4 col-flex-lg-3">
             <PhoneCard product={product} selected={(id) => phoneSelected(id)} />
           </div>
         );
@@ -54,13 +41,11 @@ function renderList(products: Product[]) {
 }
 function phoneSelected(id: string): void {
   console.log('PhonesListView#phoneSelected:', id);
-  EventEmitter.eventEmmiterFactory(
-    EventsRegistry.PHONE_SELECTED_FOR_DISPLAY
-  ).emitEvent(id);
+  EventEmitter.eventEmmiterFactory(EventsRegistry.PHONE_SELECTED_FOR_DISPLAY).emitEvent(id);
 }
 
 function renderSpinner(): JSX.Element {
-  return <img src="/src/assets/spinner.svg" alt="loading ..." />;
+  return <img src="/spinner.gif" alt="loading ..." />;
 }
 
 export default PhonesListView;
