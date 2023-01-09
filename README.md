@@ -45,7 +45,7 @@ Ejecutar `nx graph` lo cual abrirá una ventana del navegador.
 | Simbolo | Significado |
 |-----|-------------------|
 | [x] | Tarea completada  |
-| [~] | Tarea en proceso  |
+| **WIP** | Tarea en proceso  |
 | [ ] | Tarea pendiente   |
 
 ### Tareas
@@ -59,7 +59,7 @@ Ejecutar `nx graph` lo cual abrirá una ventana del navegador.
 - [x] Maquetación de la cabecera de la aplicación.
 - [ ] Scroll virtual del listado de dispositivos.
 - [ ] Maquetación de campos del buscador de dispositivos e implementación de su lógica.
-- [~] Vista del detalle de un dispositivo (queda ajustar maquetación y navegación al carrito).
+- [ ] **WIP**: Vista del detalle de un dispositivo (queda ajustar maquetación y navegación al carrito).
 - [ ] Página de resumen del carrito de la compra.
 - [ ] Icono del carrito de la compra (muestra número de productos en la cesta).
 
