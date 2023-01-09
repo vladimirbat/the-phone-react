@@ -1,0 +1,11 @@
+.waiting-spinner {
+  width: 100%;
+  text-align: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    max-height: 120px;
+  }
+}

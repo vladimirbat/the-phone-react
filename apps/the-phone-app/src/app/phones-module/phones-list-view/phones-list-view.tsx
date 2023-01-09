@@ -1,6 +1,6 @@
 import './phones-list-view.scss';
 import { emmitAndWaitForResponse, EventEmitter, EventsRegistry, Product, SearchPhonesRequest, SearchPhonesResponse } from '@the-phone/commons';
-import { PhoneCard } from '@the-phone/ui';
+import { PhoneCard, WaitingSpiner } from '@the-phone/ui';
 
 import { useEffect, useState } from 'react';
 
@@ -20,7 +20,7 @@ export function PhonesListView(props: PhonesListViewProps): JSX.Element {
     <div className="container-flex">
       <div className="col-flex-xs-12 col-flex-sm-12 col-flex-md-12 col-flex-lg-12">
         {products ? renderList(products) : null}
-        {!products ? renderSpinner() : null}
+        <WaitingSpiner condition={!products} />
       </div>
     </div>
   );
@@ -42,10 +42,6 @@ function renderList(products: Product[]) {
 function phoneSelected(id: string): void {
   console.log('PhonesListView#phoneSelected:', id);
   EventEmitter.eventEmmiterFactory(EventsRegistry.PHONE_SELECTED_FOR_DISPLAY).emitEvent(id);
-}
-
-function renderSpinner(): JSX.Element {
-  return <img src="/spinner.gif" alt="loading ..." />;
 }
 
 export default PhonesListView;
