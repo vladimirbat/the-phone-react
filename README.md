@@ -5,6 +5,7 @@
 Author: Vladimir Bataller Rodríguez [vladimirbat at Git](https://github.com/vladimirbat).
 Repository: [https://github.com/vladimirbat/the-phone-react](https://github.com/vladimirbat/the-phone-react).
 Type: POC - Experimental.
+Deployment Site: https://the-phone-react.vercel.app/
 ## Introducción
 
 Esta es una pequeña aplicación de ejemplo en React que simula una tienda de teléfonos móviles.
@@ -17,7 +18,7 @@ Las principales características técnicas del proyecto son:
 - Se accede a un API propia (desarrollada en el repositorio de GitHub [the-phone-api](https://github.com/vladimirbat/the-phone-api) del autor). Esta API está desarrollada con funciones serverless de Vercel y está desplegada en esa plataforma ([ver the-phone-api desplegada en Vercel](https://the-phone-api.vercel.app/)).
 - Para la estilización se emplea una arquitectura Sass 7+1 simplificada por la sencillez del proyecto y se emplean [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) para dejar abierta la puerta a un mantenimiento basado en Design Tokens y la posibilidad de implementar varios temas de estilo.
 - Para la construcción del proyecto se ha empleado Vite en lugar de Webpack, con lo que se consiguen mejoras en los tiempos de desarrollo en local, construcción y CI.
-- Este proyecto se deplegará en la plataforma Vercel para que pueda probarse su funcionamiento sin necesidad de instalarlo en local.
+- Este proyecto se deplegará en la plataforma Vercel para que pueda probarse su funcionamiento sin necesidad de instalarlo en local ([ver el proyecto desplegado en plataforma Vercel](https://the-phone-react.vercel.app/)).
 - La carga de páginas se realiza en modo Lazy, pero en lugar de usar React.lazy y React.Suspense, se emplea la biblioteca ['@loadable/component'](https://github.com/gregberge/loadable-components).
 ...
 ## Para ejecutar este proyecto en local
