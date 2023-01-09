@@ -45,9 +45,10 @@ export const PRODUCT_LABELS:ProductLabels = { 'es': {
   secondaryCamera: 'Cámara Secundaria',
 }}
 
-export type ProductLabels = { [key:string]: {
+export type ProductLabels = { [key:string]: ProductLanguageLabels}
+
+export type ProductLanguageLabels = {
   brand: string,
-  model: string,
   cpu: string,
   ram: string,
   so: string,
@@ -57,4 +58,4 @@ export type ProductLabels = { [key:string]: {
   weight: string,
   primaryCamera: string,
   secondaryCamera: string,
-}}
+};

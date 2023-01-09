@@ -1,5 +1,4 @@
-import { stringify } from 'querystring';
-import { PriceOption } from '../../../../the-phone-commons/src/lib/model/products.model';
+import { PriceOption } from '@the-phone/commons';
 import { getFirstPrice } from '../tools/price/price.tools';
 import './phone-price.scss';
 
@@ -19,4 +18,3 @@ export function PhonePrice(props: PhonePriceProps) {
 }
 
 export default PhonePrice;
-

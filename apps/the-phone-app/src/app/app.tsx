@@ -2,9 +2,12 @@
 import { AppHeader } from '@the-phone/ui';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import AppNavigateProvider from './app-navigate-provider/app-navigate-provider';
-import PhoneDetailsPage from './pages/phone-details-page/phone-details-page';
-import PhonesSearchPage from './pages/phones-search-page/phones-search-page';
+// import PhonesSearchPage from './pages/phones-search-page/phones-search-page';
 import ShoppingcartPage from './pages/shoppingcart-page/shoppingcart-page';
+import loadable from '@loadable/component';
+
+const PhonesSearchPage = loadable(() => import('./pages/phones-search-page/phones-search-page'));
+const PhoneDetailsPage = loadable(() => import('./pages/phone-details-page/phone-details-page'));
 
 export function App() {
   return (
