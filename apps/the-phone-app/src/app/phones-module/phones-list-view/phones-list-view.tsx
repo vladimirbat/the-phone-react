@@ -1,49 +1,75 @@
+import { EventEmitter, EventsRegistry, Product } from '@the-phone/commons';
+import { DummyPhoneCard, PhoneCard } from '@the-phone/ui';
 import './phones-list-view.scss';
-import { emmitAndWaitForResponse, EventEmitter, EventsRegistry, Product, SearchPhonesRequest, SearchPhonesResponse } from '@the-phone/commons';
-import { PhoneCard, WaitingSpiner } from '@the-phone/ui';
-
-import { useEffect, useState } from 'react';
-
-/* eslint-disable-next-line */
+import React, { useRef } from 'react';
+import { PHONES_CHUNK_SIZE } from '../const/phones.const';
+import { IntersectionObserverFactory } from './tools/intersection-observer-factory';
 export interface PhonesListViewProps {
   products: Product[] | null;
+  waitForPage: boolean;
   moreProducts: () => void;
+  lastPageAchived: boolean;
 }
 
 export function PhonesListView(props: PhonesListViewProps): JSX.Element {
-  const { products, moreProducts } = props;
+  const { products, moreProducts, waitForPage, lastPageAchived } = props;
+  const intersectionObserver = IntersectionObserverFactory.getIntersectionObserver(moreProducts, waitForPage);
+  const listEnd = useRef(null);
+  if (listEnd.current && !lastPageAchived) {
+    intersectionObserver.observe(listEnd.current);
+  }
+  return render(products, waitForPage, lastPageAchived, listEnd);
+}
 
+function render(products: Product[] | null, waitForPage: boolean, lastPageAchived: boolean, listEnd: React.MutableRefObject<null>) {
   return (
     <div className="container-flex">
       <div className="col-flex-xs-12 col-flex-sm-12 col-flex-md-12 col-flex-lg-12">
-        {products ? renderList(products) : null}
-        {products ? renderButton(moreProducts) : null}
-        <WaitingSpiner condition={!products} />
+        {renderPhonesAndDummies(products, waitForPage, lastPageAchived)}
+        {renderEndLine(lastPageAchived, listEnd)}
       </div>
     </div>
   );
 }
 
-function renderList(products: Product[]) {
+function renderPhonesAndDummies(products: Product[] | null, waitForPage: boolean, lastPageAchived: boolean) {
   return (
     <div className="phones-list-grid">
-      {products.map((product) => {
-        return (
-          <div key={product.id} className="col-flex-xs-6 col-flex-sm-6 col-flex-md-4 col-flex-lg-3">
-            <PhoneCard product={product} selected={(id) => phoneSelected(id)} />
-          </div>
-        );
-      })}
+      {products ? renderPhones(products) : null}
+      {!lastPageAchived ? renderDummies(waitForPage) : null}
     </div>
   );
 }
 
-function renderButton(moreProducts: () => void) {
-  return moreProducts ? <button onClick={(event) => moreProducts()}>Más</button> : null;
+function renderPhones(products: Product[]) {
+  return products.map((product) => {
+    return (
+      <div key={product.id} className="col-flex-xs-6 col-flex-sm-6 col-flex-md-4 col-flex-lg-3">
+        <PhoneCard product={product} selected={(id) => phoneSelected(id)} />
+      </div>
+    );
+  });
+}
+
+function renderDummies(waitForPage: boolean) {
+  const dummiesArray = [...Array(PHONES_CHUNK_SIZE).keys()];
+  if (!waitForPage) {
+    return null;
+  }
+  return dummiesArray.map((num) => {
+    return (
+      <div key={`dummy-${num}`} className="col-flex-xs-6 col-flex-sm-6 col-flex-md-4 col-flex-lg-3">
+        <DummyPhoneCard />
+      </div>
+    );
+  });
+}
+
+function renderEndLine(lastPageAchived: boolean, listEnd: React.MutableRefObject<null>) {
+  return !lastPageAchived && <div ref={listEnd} style={{ marginBottom: '40px' }} />;
 }
 
 function phoneSelected(id: string): void {
-  console.log('PhonesListView#phoneSelected:', id);
   EventEmitter.eventEmmiterFactory(EventsRegistry.PHONE_SELECTED_FOR_DISPLAY).emitEvent(id);
 }
 
