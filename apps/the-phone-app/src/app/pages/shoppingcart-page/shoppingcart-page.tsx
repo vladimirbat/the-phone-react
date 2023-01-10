@@ -5,10 +5,10 @@ export interface ShoppingcartPageProps {}
 
 export function ShoppingcartPage(props: ShoppingcartPageProps) {
   return (
-    <div>
-      <h1>Welcome to ShoppingcartPage!</h1>
+    <div className="shoppingcart-page">
+      <h2 className="mb-3 mt-2">Su compra</h2>
     </div>
-  );
+  ); 
 }
 
 export default ShoppingcartPage;

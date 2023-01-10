@@ -6,7 +6,8 @@
     // Include css theme variables
 
     $white: #ffffff;
-    --theme-color-light: #b4cde6;
+    --theme-color-white: $white;
+    --theme-color-light: #e4dcc9;
     --theme-color-dark: #152e1b;
     --theme-color-primary: #5e3f4e;
     --theme-color-secondary: #ea4c87;
@@ -14,6 +15,7 @@
 
     --theme-color-pressed: #4f3642;
     --theme-color-hover: #522e40;
+    --theme-color-active: #5f354a;
     --theme-color-inactive: #8d6679;
 
     --theme-color-black: #000000;

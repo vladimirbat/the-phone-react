@@ -1,7 +1,9 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.shoppingcart-page {
+  h2 {
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    color: var(--theme-color-title-default);
+    padding: 0;
+  }
+}
