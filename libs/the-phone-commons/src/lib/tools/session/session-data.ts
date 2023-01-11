@@ -3,11 +3,11 @@ import { SessionRegistry } from './session-registry';
 export class SessionData {
   public static subjects: { [key: string]: Subject<unknown> } = {};
 
-  public static getObservable(name: SessionRegistry): Observable<unknown> {
+  public static getObservable<T>(name: SessionRegistry): Observable<T> {
     if (!this.subjects[name]) {
-      this.subjects[name] = new Subject<unknown>();
+      this.subjects[name] = new Subject();
     }
-    return this.subjects[name];
+    return this.subjects[name] as Observable<T>;
   }
 
   public static setString(name: SessionRegistry, value: string) {

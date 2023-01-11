@@ -18,10 +18,7 @@ export function PhoneColors(props: PhoneColorsProps) {
 
 export default PhoneColors;
 
-function renderColor(
-  color: DeviceVariantOption,
-  colorSelected?: ColorSelectedCallback
-): JSX.Element | null {
+function renderColor(color: DeviceVariantOption, colorSelected?: ColorSelectedCallback): JSX.Element | null {
   if (!color?.code) {
     return null;
   }
@@ -32,10 +29,10 @@ function renderColor(
       className="phone-color"
       style={style}
       onClick={(event) => {
-        colorSelected ? colorSelected(color.code) : null;
+        colorSelected ? colorSelected(color) : null;
       }}
     ></div>
   );
 }
 
-export type ColorSelectedCallback = (colorCode: string) => void;
+export type ColorSelectedCallback = (colorOption: DeviceVariantOption) => void;

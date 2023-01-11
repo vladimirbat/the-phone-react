@@ -32,3 +32,8 @@ export function getCheapestPrice(prices: PriceOption[]): string {
   });
   return formatPrice(minValue != 1000000 ? minValue : undefined);
 }
+
+export function parseNumberPrice(strPrice: string): number | undefined {
+  const value = parseFloat(strPrice);
+  return value ? value : undefined;
+}

@@ -1,15 +1,14 @@
-import { PriceOption, Product, PRODUCT_LABELS } from '@the-phone/commons';
+import { DeviceVariantOption, PriceOption, Product, PRODUCT_LABELS, ShoppingcartItem } from '@the-phone/commons';
 import { useState } from 'react';
 import PhoneCharacteristics from '../phone-characteristics/phone-characteristics';
 import PhoneColors from '../phone-colors/phone-colors';
 import PhonePrice from '../phone-price/phone-price';
-import { getPriceForColor } from '../tools/price/price.tools';
+import { getPriceForColor, parseNumberPrice } from '../tools/price/price.tools';
 import './phone-view.scss';
 
-/* eslint-disable-next-line */
 export interface PhoneViewProps {
   product: Product;
-  iWantIt: (id: string) => void;
+  iWantIt: (newItem: ShoppingcartItem) => void;
 }
 
 export function PhoneView(props: PhoneViewProps) {
@@ -18,10 +17,25 @@ export function PhoneView(props: PhoneViewProps) {
   const imgSrc = `https://the-phone-api.vercel.app/phone-images/${imgUrl}`;
   const [currentPrice, setCurrentPrice] = useState<string | undefined>(undefined);
   const [currentColorCode, setCurrentColorCode] = useState<string | undefined>(undefined);
-  function colorSelected(colorCode: string) {
-    const selectedPrice = getPriceFromColor(price, colorCode);
+  const colorSelected = (colorOption: DeviceVariantOption) => {
+    const selectedPrice = getPriceFromColor(price, colorOption.code);
     setCurrentPrice(selectedPrice);
-  }
+    setCurrentColorCode(colorOption.code);
+  };
+  const iWantItHandler = () => {
+    if (!currentColorCode) {
+      return;
+    }
+    const unitaryPrice = currentPrice ? parseNumberPrice(currentPrice) : undefined;
+    const shoppingcartItem: ShoppingcartItem = {
+      phone: product,
+      colorCode: currentColorCode,
+      quantity: 1,
+      stringUnitaryPrice: currentPrice,
+      unitaryPrice,
+    };
+    iWantIt(shoppingcartItem);
+  };
   const alt = `Imagen de ${model}`;
   return (
     <article className="phone-detail-view">
@@ -37,7 +51,7 @@ export function PhoneView(props: PhoneViewProps) {
           <div className="color-selector">
             <div className="color-selector-text">Selecciona un color</div>
             <div className="color-selector-options">
-              <PhoneColors colors={options?.colors} colorSelected={(colorName) => colorSelected(colorName)} />
+              <PhoneColors colors={options?.colors} colorSelected={(colorOption) => colorSelected(colorOption)} />
             </div>
           </div>
           {currentPrice ? (
@@ -49,7 +63,9 @@ export function PhoneView(props: PhoneViewProps) {
             <PhonePrice price={product.price} />
           )}
           <div>
-            <button onClick={(event) => iWantIt(id)}>¡Lo quiero!</button>
+            <button onClick={(event) => iWantItHandler()} disabled={!currentColorCode}>
+              ¡Lo quiero!
+            </button>
           </div>
         </div>
       </div>

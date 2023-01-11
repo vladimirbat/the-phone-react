@@ -4,5 +4,6 @@ export interface ShoppingcartItem {
   phone: Product;
   quantity: number;
   colorCode: string;
-  unitaryPrice: number;
+  stringUnitaryPrice: string | undefined;
+  unitaryPrice: number | undefined;
 }
