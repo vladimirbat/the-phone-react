@@ -15,11 +15,13 @@ export function AppHeader(props: AppHeaderProps) {
   const { SHOPPINGCART_ICON_CLICK, TITLE_CLICK, LOGO_ICON_CLICK } = HEADER_EVENTS;
   return (
     <div className="app-header container">
-      <div className="logo-container" onClick={() => headerOnClick(LOGO_ICON_CLICK)}>
+      <div className="logo-container cursor-pointer" onClick={() => headerOnClick(LOGO_ICON_CLICK)}>
         <img src={srcLogo} alt={`the application name is: ${title}`} />
       </div>
       <div className="title-container">
-        <h1 onClick={() => headerOnClick(TITLE_CLICK)}>{title}</h1>
+        <h1 className="cursor-pointer" onClick={() => headerOnClick(TITLE_CLICK)}>
+          {title}
+        </h1>
       </div>
       <ShoppingcartIcon srcShoppingcart={srcShoppingcart} shopingcartIconClick={() => headerOnClick(SHOPPINGCART_ICON_CLICK)} />
     </div>

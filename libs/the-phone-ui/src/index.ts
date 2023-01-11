@@ -1,3 +1,4 @@
+export * from './lib/alert-modal/alert-modal';
 export * from './lib/shoppingcart-table/shoppingcart-table';
 export * from './lib/shoppingcart-icon/shoppingcart-icon';
 export * from './lib/search-input-box/search-input-box';
@@ -12,5 +13,5 @@ export * from './lib/dummy-phone-card/dummy-phone-card';
 export * from './lib/search-input-box/search-input-box';
 export * from './lib/shoppingcart-icon/shoppingcart-icon';
 export * from './lib/shoppingcart-table/shoppingcart-table';
-
+export * from './lib/alert-modal/alert-modal';
 export * from './lib/the-phone-ui';
