@@ -9,6 +9,7 @@ export class DomainFlow {
     constructor(private routerController: RouterController){
         this.displayPhoneHandler = this.displayPhoneHandler.bind(this);
         this.initBuyPhoneSubscription = this.initBuyPhoneSubscription.bind(this);
+        this.buyPhoneHandler = this.buyPhoneHandler.bind(this);
         this.initDisplayPhoneSubscription();
         this.initBuyPhoneSubscription();
     }
@@ -23,7 +24,6 @@ export class DomainFlow {
 
     initBuyPhoneSubscription(){
         this.requestPhoneForBuyingReceiver.subscribe(this.buyPhoneHandler);
-        
     }
     buyPhoneHandler(id: string): void {
         this.routerController.navigateToView(ViewsRegistry.SHOPPINGCART_VIEW, []);

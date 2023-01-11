@@ -18,6 +18,6 @@
     "types": ["vite/client"]
   },
   "files": [],
-  "include": ["src"],
+  "include": ["src", "../../libs/the-phone-commons/src/lib/tools/session/session-data.ts"],
   "extends": "../../tsconfig.base.json"
 }
