@@ -19,3 +19,16 @@ export function getPriceForColor(price: PriceOption[], colorCode: string): strin
   const option = price.find((priceOption)=> priceOption.color.code === colorCode);
   return formatPrice(option?.price);
 }
+
+export function getCheapestPrice(prices: PriceOption[]): string {
+  if (!prices || prices.length === 0) {
+    return 'Consultar cuota';
+  }
+  let minValue = 1000000;
+  prices.forEach((option) => {
+    if (option.price && option.price < minValue) {
+      minValue = option.price;
+    }
+  });
+  return formatPrice(minValue != 1000000 ? minValue : undefined);
+}

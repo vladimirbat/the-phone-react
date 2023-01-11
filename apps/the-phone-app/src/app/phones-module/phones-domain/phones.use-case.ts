@@ -6,7 +6,7 @@ import {
   SearchPhonesRequest,
   SearchPhonesResponse,
 } from '@the-phone/commons';
-import { PhonesApi } from '../../../../src/domain/adapters/fetch-api';
+import { PhonesApi } from '../../../domain/requested-interfaces/fetch-api';
 
 export class PhonesUseCase {
   responsePhonesEmitter = EventEmitter.eventEmmiterFactory(EventsRegistry.RESPONSE_PHONES);

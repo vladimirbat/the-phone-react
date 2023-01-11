@@ -1,8 +1,7 @@
 import { PriceOption } from '@the-phone/commons';
-import { getFirstPrice } from '../tools/price/price.tools';
+import { getCheapestPrice, getFirstPrice } from '../tools/price/price.tools';
 import './phone-price.scss';
 
-/* eslint-disable-next-line */
 export interface PhonePriceProps {
   price: PriceOption[];
 }
@@ -12,7 +11,7 @@ export function PhonePrice(props: PhonePriceProps) {
   return (
     <div className="lower-text">
       <p className="small">Desde</p>
-      <h5>{getFirstPrice(price)}</h5>
+      <h5>{getCheapestPrice(price)}</h5>
     </div>
   );
 }

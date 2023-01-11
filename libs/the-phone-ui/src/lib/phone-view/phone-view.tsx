@@ -17,6 +17,7 @@ export function PhoneView(props: PhoneViewProps) {
   const { model, options, imgUrl, id, price } = product;
   const imgSrc = `https://the-phone-api.vercel.app/phone-images/${imgUrl}`;
   const [currentPrice, setCurrentPrice] = useState<string | undefined>(undefined);
+  const [currentColorCode, setCurrentColorCode] = useState<string | undefined>(undefined);
   function colorSelected(colorCode: string) {
     const selectedPrice = getPriceFromColor(price, colorCode);
     setCurrentPrice(selectedPrice);
