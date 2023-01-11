@@ -8,4 +8,5 @@ export * from './lib/model/shoppingcart.model';
 export * from './lib/tools/model/utils.model';
 export * from './lib/tools/session/session-data';
 export * from './lib/tools/session/session-registry';
+export * from './lib/tools/shoppingcart/shoppingcart-tools';
 

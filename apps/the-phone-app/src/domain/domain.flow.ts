@@ -11,11 +11,13 @@ export class DomainFlow {
   }
 
   constructor(private routerController: RouterController, private navigationEvents: NavigationEvents) {
-    this.displayPhoneHandler = this.displayPhoneHandler.bind(this);
-    this.buyPhoneHandler = this.buyPhoneHandler.bind(this);
+    // this.displayPhoneHandler = this.displayPhoneHandler.bind(this);
+    // this.buyPhoneHandler = this.buyPhoneHandler.bind(this);
 
     this.navigationEvents.subscribeToDisplayPhone((id) => this.displayPhoneHandler(id));
     this.navigationEvents.subscribeToBuyPhone((id) => this.buyPhoneHandler(id));
+    this.navigationEvents.subscribeToGoToShoppingcart(() => this.goToShoppingcartHandler());
+    this.navigationEvents.subscribeToGoToSearchPhones(() => this.goToSearchPhonesHandler());
   }
 
   displayPhoneHandler(id: string): void {
@@ -26,5 +28,15 @@ export class DomainFlow {
   buyPhoneHandler(id: string): void {
     this.routerController.navigateToView(ViewsRegistry.SHOPPINGCART_VIEW, []);
     this._privateCurrentView = ViewsRegistry.SHOPPINGCART_VIEW;
+  }
+
+  goToShoppingcartHandler(): void {
+    this.routerController.navigateToView(ViewsRegistry.SHOPPINGCART_VIEW, []);
+    this._privateCurrentView = ViewsRegistry.SHOPPINGCART_VIEW;
+  }
+
+  goToSearchPhonesHandler(): void {
+    this.routerController.navigateToView(ViewsRegistry.PHONES_VIEW, []);
+    this._privateCurrentView = ViewsRegistry.PHONES_VIEW;
   }
 }

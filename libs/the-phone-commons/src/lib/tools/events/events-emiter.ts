@@ -1,10 +1,10 @@
 import { EventsRegistry } from "./events-registry";
 
 export class EventEmitter {
-  protected static singletonEmitters: {[key:string]: EventEmitter} = {}
+  protected static singletonEmitters: { [key: string]: EventEmitter } = {};
   windowInstance: Window = window;
   constructor(private name: EventsRegistry) {}
-  emitEvent<T>(data: T, cancelledCallBack?: ()=> void) {
+  emitEvent<T>(data?: T, cancelledCallBack?: () => void) {
     const options: CustomEventInit<T> = {
       detail: data,
       bubbles: false,
@@ -12,12 +12,12 @@ export class EventEmitter {
     };
     const event = new CustomEvent(this.name, options);
     const cancelled = this.windowInstance.dispatchEvent(event);
-    if(cancelledCallBack && cancelled){
+    if (cancelledCallBack && cancelled) {
       cancelledCallBack();
     }
   }
-  
-  public static eventEmmiterFactory(name:EventsRegistry): EventEmitter {
+
+  public static eventEmmiterFactory(name: EventsRegistry): EventEmitter {
     EventEmitter.singletonEmitters[name] = EventEmitter.singletonEmitters[name] ?? new EventEmitter(name);
     return EventEmitter.singletonEmitters[name];
   }

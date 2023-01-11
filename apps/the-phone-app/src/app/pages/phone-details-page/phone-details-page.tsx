@@ -1,4 +1,4 @@
-import { emmitAndWaitForResponse, EventEmitter, EventsRegistry, Product, SessionData, SessionRegistry, ShoppingcartItem } from '@the-phone/commons';
+import { emmitAndWaitForResponse, EventEmitter, EventsRegistry, Product, SessionData, SessionRegistry, ShoppingcartItem, shoppingcartItemsEqual } from '@the-phone/commons';
 import { PhoneView } from '@the-phone/ui';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
@@ -37,8 +37,3 @@ function saveSelectedPhone(shoppingcartItem: ShoppingcartItem) {
   }
   SessionData.setObject(SHOPPINGCART_ARRAY, shoppingcartArray);
 }
-
-function shoppingcartItemsEqual(sp1: ShoppingcartItem, sp2: ShoppingcartItem): boolean {
-  return sp1.phone.id === sp2.phone.id && sp1.colorCode === sp2.colorCode && sp1.stringUnitaryPrice === sp2.stringUnitaryPrice;
-}
-

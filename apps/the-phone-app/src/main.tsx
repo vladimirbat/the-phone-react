@@ -7,11 +7,10 @@ import { AppDomain } from './domain/domain.main';
 const appDomain = new AppDomain();
 appDomain.start();
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   // <StrictMode>
   <App />
   // </StrictMode>
 );
+

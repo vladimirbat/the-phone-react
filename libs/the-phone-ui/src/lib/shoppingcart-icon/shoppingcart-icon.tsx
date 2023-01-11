@@ -5,16 +5,17 @@ import './shoppingcart-icon.scss';
 /* eslint-disable-next-line */
 export interface ShoppingcartIconProps {
   srcShoppingcart: string;
+  shopingcartIconClick?: () => void;
 }
 
 const SHOPPINGCART_ARRAY = SessionRegistry.SHOPPINGCART_ARRAY;
 
 export function ShoppingcartIcon(props: ShoppingcartIconProps) {
-  const { srcShoppingcart } = props;
+  const { srcShoppingcart, shopingcartIconClick } = props;
   const [num, setNum] = useState(getNumFromSession());
   useEffect(() => changeCartEfect(setNum), []);
   return (
-    <div className="shoppingcart-icon">
+    <div className="shoppingcart-icon" onClick={() => shopingcartIconClick && shopingcartIconClick()}>
       {num ? <div className="num-products">{num}</div> : null}
       <img src={srcShoppingcart} alt={`The shopping cart has 0 products`} />
     </div>
