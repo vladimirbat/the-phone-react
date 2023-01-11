@@ -15,12 +15,12 @@ export function SearchInputBox(props: SearchInputBoxProps) {
     setText('');
     setShowClear(false);
     inputComponent.current?.focus();
+    newSearch('');
   };
   const inputChange = (event: FormEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
     setText(value);
     setShowClear(!!value);
-    console.log('--- input ---', value?.length);
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
