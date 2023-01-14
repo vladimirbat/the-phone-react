@@ -21,10 +21,12 @@ export function ShoppingcartTable(props: ShoppingcartTableProps) {
         {shoppingcartArray.map((item, index) => {
           const { phone, quantity, stringUnitaryPrice, unitaryPrice, colorCode } = item;
           return (
-            <div className="tr" key={phone.id}>
+            <div className="tr" key={phone.id + colorCode}>
               <div className="td">{phone.brand}</div>
-              <div className="td cursor-pointer hover-bold model" onClick={() => onClickPhone(phone.id)}>
-                {phone.model}
+              <div className="td ">
+                <div className="cursor-pointer hover-bold model" onClick={() => onClickPhone(phone.id)}>
+                  {phone.model}
+                </div>
               </div>
               <div className="td">
                 <div className="color-ball" style={{ backgroundColor: colorCode }}></div>
@@ -33,7 +35,12 @@ export function ShoppingcartTable(props: ShoppingcartTableProps) {
               <div className="td">{stringUnitaryPrice}</div>
               <div className="td">{totalLine(unitaryPrice, quantity)}</div>
               <div className="td">
-                <img className="dustbin cursor-pointer" src="dustbin.svg" alt="delete" onClick={() => deleteItem(item, index)} />
+                <img
+                  className="dustbin cursor-pointer"
+                  src="dustbin.svg"
+                  alt="delete"
+                  onClick={() => deleteItem(item, index)}
+                />
               </div>
             </div>
           );
@@ -54,5 +61,11 @@ function totalLine(unitaryPrice: number | undefined, quantity: number): string {
 }
 
 function renderEmptyModal(onEmptyCart: () => void) {
-  return <AlertModal title="Empty Shoping Cart" text="You are going to be redirected to the shearch phones page" closeEvent={() => onEmptyCart()} />;
+  return (
+    <AlertModal
+      title="Empty Shopingcart"
+      text="You are going to be redirected to the search phones page"
+      closeEvent={() => onEmptyCart()}
+    />
+  );
 }

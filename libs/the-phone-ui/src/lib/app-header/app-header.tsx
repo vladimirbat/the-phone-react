@@ -19,8 +19,10 @@ export function AppHeader(props: AppHeaderProps) {
         <img src={srcLogo} alt={`the application name is: ${title}`} />
       </div>
       <div className="title-container">
-        <h1 className="cursor-pointer" onClick={() => headerOnClick(TITLE_CLICK)}>
-          {title}
+        <h1>
+          <span className="cursor-pointer" onClick={() => headerOnClick(TITLE_CLICK)}>
+            {title}
+          </span>
         </h1>
       </div>
       <ShoppingcartIcon srcShoppingcart={srcShoppingcart} shopingcartIconClick={() => headerOnClick(SHOPPINGCART_ICON_CLICK)} />

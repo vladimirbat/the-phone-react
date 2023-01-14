@@ -1,16 +1,12 @@
-@use './button-theme.scss';
-@use './content-icon-theme.scss';
-@use './banner-text-theme.scss';
-
 :root {
     // Include css theme variables
 
     $white: #ffffff;
     --theme-color-white: $white;
-    --theme-color-light: #e4dcc9;
+    --theme-color-light: var(--theme-color-black-050);
     --theme-color-dark: #152e1b;
-    --theme-color-primary: #5e3f4e;
-    --theme-color-secondary: #ea4c87;
+    --theme-color-primary: var(--theme-color-black-400);
+    --theme-color-secondary: var(--theme-color-sucsess-900);
 
 
     --theme-color-pressed: #4f3642;
@@ -29,6 +25,7 @@
     --theme-color-black-200: #cccccc;
     --theme-color-black-100: #e6e6e6;
     --theme-color-black-050: #f2f2f2;
+    --theme-color-black-025: #f8f8f8;
     --theme-color-white: $white;
 
     --theme-color-sucsess-900: #0a713a;
@@ -56,16 +53,12 @@
     --theme-color-error-100: #fcc5c6;
 
     --theme-color-background-content-default-hover: var(--theme-color-primary);
-    --theme-color-background-content-fill-default: var(--theme-color-black-100);
+    --theme-color-background-content-fill-active: var(--theme-color-black-025);
+    --theme-color-background-content-fill-default: var(--theme-color-black-050);
     --theme-color-background-content-fill-hover: var(--theme-color-black-200);
     
     --theme-color-title-default: var(--theme-color-black);
 
-
-
-
-    // Category-Type-Item-Subitem-State
-    @include button-theme.define-variables;
-    @include content-icon-theme.define-variables;
-    @include banner-text-theme.define-variables;
+    --theme-color-link-default: var(--theme-color-secondary);
+    --theme-color-link-hover: var(--theme-color-secondary);
 }

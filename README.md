@@ -67,7 +67,7 @@ Ejecutar `nx graph` lo cual abrirá una ventana del navegador.
 - [x] Icono del carrito de la compra (muestra número de productos en la cesta).
 - [ ] Refactorizar arq. hexagonal en el frontend.
 - [ ] Incluir inversify en arq hexagonal.
-- [ ] Agregar acción prepush para ejecutar tsc antes de subir cambios.
+- [ ] Agregar acción pre-push para ejecutar tsc antes de subir cambios.
 - [ ] Implementar testing.
 
 

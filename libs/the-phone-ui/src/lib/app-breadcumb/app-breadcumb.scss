@@ -1,0 +1,32 @@
+.app-breadcumb{
+
+  ul {
+    padding: 10px 16px;
+    list-style: none;
+    color: var(--theme-color-primary);
+    background-color: var(--theme-color-background-content-fill-default);
+    li {
+      display: inline;
+      font-size: 18px;
+    }
+    
+    li + li:before {
+      padding: 0.5em;
+      color: var(--theme-color-primary);
+      content: '\/';
+    }
+    
+    li a {
+      color: var(--theme-color-link-default);
+      text-decoration: none;
+    }
+    
+    li a:hover {
+      color: var(--theme-color-link-hover);
+      text-decoration: none;
+      text-shadow:0px 0px 1px black;
+      cursor: pointer;
+    }
+  }
+  
+}

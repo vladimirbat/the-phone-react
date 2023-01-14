@@ -1,3 +1,4 @@
 export enum SessionRegistry {
   SHOPPINGCART_ARRAY = 'SHOPPINGCART_ARRAY',
+  CURRENT_PAGE = 'CURRENT_PAGE',
 }

@@ -1,13 +1,26 @@
 import { KeyValueObject } from "@the-phone/commons";
-import { NavigateFunction } from "react-router";
+import { Location, NavigateFunction } from 'react-router';
+import { first, firstValueFrom, Subject } from 'rxjs';
 import { RouterController } from '../domain/requested-interfaces/router-controller';
 import { ViewsRegistry } from '../domain/requested-interfaces/views-registry';
 
 export class WebRouterController implements RouterController {
   private static navigate: NavigateFunction = (...params) => ({});
+  private static locationSubject: Subject<Location> = new Subject<Location>();
+  private static location: Location;
 
   public static setNavigate(nav: NavigateFunction) {
     WebRouterController.navigate = nav;
+  }
+
+  static setLocation(location: Location) {
+    WebRouterController.location = location;
+    console.log('Location', location);
+    this.locationSubject.next(location);
+  }
+
+  getCurrentView(): Promise<ViewsRegistry | undefined> {
+    return firstValueFrom(WebRouterController.locationSubject).then(({ pathname }) => getViewFromPath(pathname));
   }
 
   public navigateToView(viewName: ViewsRegistry, params: KeyValueObject<string>[]): void {
@@ -41,8 +54,13 @@ export class WebRouterController implements RouterController {
   }
 }
 
-const routesRegistry: {[viewName:string]: string} = {
-  'PHONE_VIEW': '/phone-detail',
-  'PHONES_VIEW': '/',
-  'SHOPPINGCART_VIEW': '/shoppingcart'
+const routesRegistry: { [viewName: string]: string } = {
+  PHONE_VIEW: '/phone-detail',
+  PHONES_VIEW: '/',
+  SHOPPINGCART_VIEW: '/shoppingcart',
+};
+
+function getViewFromPath(pathname: string): ViewsRegistry | undefined {
+  const firstPathToken = '/' + pathname.split('/')[1];
+  return Object.keys(routesRegistry).find((key) => routesRegistry[key] === firstPathToken) as ViewsRegistry;
 }
